@@ -1,1 +1,2 @@
-# Django_REST
+# DjangoRestFramework
+Repo for GeekBrains Django REST course 
