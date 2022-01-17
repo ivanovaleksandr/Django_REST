@@ -1,7 +1,7 @@
-"""library URL Configuration
+"""todo_notes URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/3.2/topics/http/urls/
+    https://docs.djangoproject.com/en/3.1/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -15,11 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 
-from users.urls import router as users_router
+from notes.views import NoteModelViewSet, ProjectModelViewSet
+from users.views import UserModelViewSet
+
+router = DefaultRouter()  # Create a router
+router.register('users', UserModelViewSet)  # Register User model view set with the router
+router.register('notes', NoteModelViewSet)  # Register Note model view set with the router
+router.register('projects', ProjectModelViewSet)  # Register Project model view set with the router
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls')),
-    path('api/users/', include(users_router.urls)),
+    path('api/', include(router.urls)),  # These urls are now determined automatically by the router
 ]
