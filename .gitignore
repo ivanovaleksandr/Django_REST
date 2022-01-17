@@ -1,5 +1,6 @@
-/.idea
-__pycache__/
-/todo_notes/db.sqlite3
-/todo_notes/.env
-/venv/
+.vscode
+venv
+__pycache__
+*.code-workspace
+*.sqlite3
+node_modules
